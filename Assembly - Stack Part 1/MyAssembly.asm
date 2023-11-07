@@ -21,6 +21,37 @@ doit proc
 	; this is a comment i can type whatever i like after a semicolon and assembler will ignore it
 	; static data -- ex. count dword 0 -- static data stays forever
 
+	; ------------------------ Assembly - Stack Part 1 ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	; ------------------- Introduction to Assembly's call Instruction --------------------------------
 	
 	; * 2^1 + 2^2 * 2^3 + 2^4 * 2^5 + 2^6 +..... 2^n
@@ -33,49 +64,49 @@ doit proc
 ;		2^5				32				2048			800
 ;		2^6				64				2112			840
 
-	mov ebx, 2			; Base
-	;xor ecx, ecx		; 0 out ecx -- startout in zero erases the total
-	mov ecx, 1
-
-again:				; loop mul to add
-	;;;;;;;; Next power:	; redundant code
-	;;;;;;;mov eax, power		; for intel structure running eax
-	;;;;;;;mul ebx				; for intel structure running eax
-	;;;;;;;mov power, eax		; for intel structure running eax
-	;;;;;;;inc count
-
-	;jmp CalculateNextPower			; jump is highly than goto
-	call CalculateNextPower			; call is the same as jmp
-back1:
-	; Multiply the current power to the total
-	mov eax, power
-	mul ecx				; replace total to ecx
-	mov ecx, eax		; replace total to ecx
-
-	;;;;;;;; Next power:	; redundant code
-	;;;;;;;mov eax, power
-	;;;;;;;mul ebx			
-	;;;;;;;mov power, eax
-	;;;;;;;inc count
-
-	;jmp CalculateNextPower
-	call CalculateNextPower
-back2:
-	; Add the power to total
-	add ecx, power
-
-	; Repeat if necessary
-	cmp count, 5		
-	jl again
-	ret
-
-CalculateNextPower:
-	; Next power:	; redundant code
-	mov eax, power
-	mul ebx			
-	mov power, eax
-	inc count
-	jmp back1			; BUG: theres back and back2 requires procedures
+;	mov ebx, 2			; Base
+;	;xor ecx, ecx		; 0 out ecx -- startout in zero erases the total
+;	mov ecx, 1
+;
+;again:				; loop mul to add
+;	;;;;;;;; Next power:	; redundant code
+;	;;;;;;;mov eax, power		; for intel structure running eax
+;	;;;;;;;mul ebx				; for intel structure running eax
+;	;;;;;;;mov power, eax		; for intel structure running eax
+;	;;;;;;;inc count
+;
+;	;jmp CalculateNextPower			; jump is highly than goto
+;	call CalculateNextPower			; call is the same as jmp
+;back1:
+;	; Multiply the current power to the total
+;	mov eax, power
+;	mul ecx				; replace total to ecx
+;	mov ecx, eax		; replace total to ecx
+;
+;	;;;;;;;; Next power:	; redundant code
+;	;;;;;;;mov eax, power
+;	;;;;;;;mul ebx			
+;	;;;;;;;mov power, eax
+;	;;;;;;;inc count
+;
+;	;jmp CalculateNextPower
+;	call CalculateNextPower
+;back2:
+;	; Add the power to total
+;	add ecx, power
+;
+;	; Repeat if necessary
+;	cmp count, 5		
+;	jl again
+;	ret
+;
+;CalculateNextPower:
+;	; Next power:	; redundant code
+;	mov eax, power
+;	mul ebx			
+;	mov power, eax
+;	inc count
+;	jmp back1			; BUG: theres back and back2 requires procedures
 
 
 
